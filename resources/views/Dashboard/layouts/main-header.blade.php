@@ -5,12 +5,14 @@
             <div class="responsive-logo">
                 <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('Dashboard/img/brand/logo.png') }}"
                         class="logo-1" alt="logo"></a>
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('Dashboard/img/brand/logo-white.png') }}"
-                        class="dark-logo-1" alt="logo"></a>
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('Dashboard/img/brand/favicon.png') }}"
-                        class="logo-2" alt="logo"></a>
-                <a href="{{ url('/' . ($page = 'index')) }}"><img src="{{ URL::asset('Dashboard/img/brand/favicon.png') }}"
-                        class="dark-logo-2" alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}"><img
+                        src="{{ URL::asset('Dashboard/img/brand/logo-white.png') }}" class="dark-logo-1"
+                        alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}"><img
+                        src="{{ URL::asset('Dashboard/img/brand/favicon.png') }}" class="logo-2" alt="logo"></a>
+                <a href="{{ url('/' . ($page = 'index')) }}"><img
+                        src="{{ URL::asset('Dashboard/img/brand/favicon.png') }}" class="dark-logo-2"
+                        alt="logo"></a>
             </div>
             <div class="app-sidebar__toggle" data-toggle="sidebar">
                 <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
@@ -317,8 +319,28 @@
                         <a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
                         <a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
                         <a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
-                        <a class="dropdown-item" href="{{ url('/' . ($page = 'page-signin')) }}"><i
-                                class="bx bx-log-out"></i> Sign Out</a>
+                        
+                        @if (auth('web')->check())
+                            <a class="dropdown-item" href="{{ route('logout.user') }}"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                    class="bx bx-log-out"></i>تسجيل خروج</a>
+                        
+                            <form id="logout-form" action="{{ route('logout.user') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+                        @endif
+
+                        @if (auth('admin')->check())
+
+                            <a class="dropdown-item" href="{{ route('logout.admin') }}"
+                                                            onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                                                class="bx bx-log-out"></i>تسجيل خروج</a>
+                            <form id="logout-form" action="{{ route('logout.admin') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+                        @endif    
                     </div>
                 </div>
                 <div class="dropdown main-header-message right-toggle">

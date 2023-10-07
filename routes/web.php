@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\AdminController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+//################################## Route User ##############################################
+
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->middleware('guest')->name('login');
+
+Route::post('/user/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest')->name('login.user');
+
+Route::post('/user/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth')->name('logout.user');
+
+//################################## Route Admin ##############################################
+
+Route::post('/login/admin', [AdminController::class, 'store'])->middleware('guest')->name('login.admin');
+
+Route::post('/logout/admin', [AdminController::class, 'destroy'])->middleware('auth:admin')->name('logout.admin');
