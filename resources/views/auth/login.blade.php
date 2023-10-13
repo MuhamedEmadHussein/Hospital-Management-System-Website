@@ -51,20 +51,17 @@
 
                                             <div class="form-group">
                                                 <label for="exampleFormControlSelect1">
-                                                    {{-- {{ trans('Dashboard/login_trans.Select_Enter') }} --}}
+                                                    {{ trans('Dashboard/login_trans.Select_Enter') }}
                                                 </label>
                                                 <select class="form-control" id="sectionChooser">
                                                     <option value="" selected disabled>
-                                                        {{-- {{ trans('Dashboard/login_trans.Choose_list') }} --}}
-                                                        اختر من القائمة
+                                                        {{ trans('Dashboard/login_trans.Choose_list') }}
                                                     </option>
                                                     <option value="user">
-                                                        {{-- {{ trans('Dashboard/login_trans.user') }} --}}
-                                                        الدخول كمستخدم
+                                                        {{ trans('Dashboard/login_trans.user') }}
                                                     </option>
                                                     <option value="admin">
-                                                        الدخول كأدمن
-                                                        {{-- {{ trans('Dashboard/login_trans.admin') }} --}}
+                                                        {{ trans('Dashboard/login_trans.admin') }}
                                                     </option>
                                                     {{-- <option value="doctor">الدخول دكتور</option>
                                                     <option value="ray_employee">موظف اشعة</option>
@@ -75,20 +72,24 @@
 
                                             {{-- form user --}}
                                             <div class="panel" id="user">
-                                                <h2>الدخول كمريض</h2>
+                                                <h2>{{ trans('Dashboard/login_trans.user') }}</h2>
                                                 <form method="POST" action="{{ route('login.user') }}">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label>Email</label> <input class="form-control"
-                                                            placeholder="Enter your email" type="email" name="email"
-                                                            :value="old('email')" required autofocus>
+                                                        <label>{{ trans('Dashboard/login_trans.email') }}</label> <input
+                                                            class="form-control"
+                                                            placeholder="{{ trans('Dashboard/login_trans.enter_email') }}"
+                                                            type="email" name="email" :value="old('email')" required
+                                                            autofocus>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Password</label> <input class="form-control"
-                                                            placeholder="Enter your password" type="password"name="password"
-                                                            required autocomplete="current-password">
-                                                    </div><button type="submit" class="btn btn-main-primary btn-block">Sign
-                                                        In</button>
+                                                        <label>{{ trans('Dashboard/login_trans.password') }}</label> <input
+                                                            class="form-control"
+                                                            placeholder="{{ trans('Dashboard/login_trans.enter_password') }}"
+                                                            type="password"name="password" required
+                                                            autocomplete="current-password">
+                                                    </div><button type="submit"
+                                                        class="btn btn-main-primary btn-block">{{ trans('Dashboard/login_trans.signin') }}</button>
                                                     <div class="row row-xs">
                                                         <div class="col-sm-6">
                                                             <button class="btn btn-block"><i class="fab fa-facebook-f"></i>
@@ -101,30 +102,37 @@
                                                     </div>
                                                 </form>
                                                 <div class="main-signin-footer mt-5">
-                                                    <p><a href="">Forgot password?</a></p>
-                                                    <p>Don't have an account? <a
-                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an
-                                                            Account</a>
+                                                    <p><a
+                                                            href="{{ route('password.request') }}">{{ trans('Dashboard/login_trans.forget') }}</a>
+                                                    </p>
+                                                    <p>{{ trans('Dashboard/login_trans.noaccount') }} <a
+                                                            href="{{ url('/' . ($page = 'register')) }}">{{ trans('Dashboard/login_trans.newaccount') }}
+                                                        </a>
                                                     </p>
                                                 </div>
                                             </div>
 
                                             {{-- form admin --}}
                                             <div class="panel" id="admin">
-                                                <h2>الدخول ادمن</h2>
+                                                <h2>{{ trans('Dashboard/login_trans.admin') }}</h2>
                                                 <form method="POST" action="{{ route('login.admin') }}">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label>Email</label> <input class="form-control"
-                                                            placeholder="Enter your email" type="email" name="email"
-                                                            :value="old('email')" required autofocus>
+                                                        <label>{{ trans('Dashboard/login_trans.email') }}</label> <input
+                                                            class="form-control"
+                                                            placeholder="{{ trans('Dashboard/login_trans.enter_email') }}"
+                                                            type="email" name="email" :value="old('email')" required
+                                                            autofocus>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Password</label> <input class="form-control"
-                                                            placeholder="Enter your password" type="password"name="password"
-                                                            required autocomplete="current-password">
-                                                    </div><button type="submit" class="btn btn-main-primary btn-block">Sign
-                                                        In</button>
+                                                        <label>{{ trans('Dashboard/login_trans.password') }}</label> <input
+                                                            class="form-control"
+                                                            placeholder="{{ trans('Dashboard/login_trans.enter_password') }}"
+                                                            type="password"name="password" required
+                                                            autocomplete="current-password">
+                                                    </div><button type="submit" class="btn btn-main-primary btn-block">
+                                                        {{ trans('Dashboard/login_trans.signin') }}
+                                                    </button>
                                                     <div class="row row-xs">
                                                         <div class="col-sm-6">
                                                             <button class="btn btn-block"><i class="fab fa-facebook-f"></i>
@@ -137,10 +145,12 @@
                                                     </div>
                                                 </form>
                                                 <div class="main-signin-footer mt-5">
-                                                    <p><a href="">Forgot password?</a></p>
-                                                    <p>Don't have an account? <a
-                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an
-                                                            Account</a>
+                                                    <p><a
+                                                            href="{{ route('password.request') }}">{{ trans('Dashboard/login_trans.forget') }}</a>
+                                                    </p>
+                                                    <p>{{ trans('Dashboard/login_trans.noaccount') }}<a
+                                                            href="{{ url('/' . ($page = 'register')) }}">{{ trans('Dashboard/login_trans.newaccount') }}
+                                                        </a>
                                                     </p>
                                                 </div>
                                             </div>
