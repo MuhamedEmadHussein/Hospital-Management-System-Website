@@ -2,7 +2,11 @@
 
 namespace App\Repository\Patients;
 use App\Interfaces\Patients\PatientsRepositoryInterface;
+use App\Livewire\SingleInvoices;
 use App\Models\Patient;
+use App\Models\PatientAccount;
+use App\Models\ReceiptAccount;
+use App\Models\Single_Invoice;
 use Illuminate\Support\Facades\Hash;
 
 class PatientRepository implements PatientsRepositoryInterface{
@@ -13,8 +17,12 @@ class PatientRepository implements PatientsRepositoryInterface{
     }
 
     public function show($id){
-        $Patient = Patient::findOrFail($id);
-        return view('Dashboard.Patients.show', compact('Patient'));
+        $Patient = patient::findorfail($id);
+        $invoices = Single_Invoice::where('patient_id', $id)->get();
+        $receipt_accounts = ReceiptAccount::where('patient_id', $id)->get();
+        $Patient_accounts = PatientAccount::where('patient_id', $id)->get();
+
+        return view('Dashboard.Patients.show', compact('Patient', 'invoices', 'receipt_accounts', 'Patient_accounts'));
     }
 
     public function create(){

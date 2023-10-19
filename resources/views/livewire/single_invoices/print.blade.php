@@ -33,10 +33,10 @@
                         <div class="invoice-header">
                             <h1 class="invoice-title">فاتوره خدمه مفرده</h1>
                             <div class="billed-from">
-                                <h6>فاتوره خدمه مفرده</h6>
-                                <p>201 المهندسين<br>
-                                    Tel No: 0111111111<br>
-                                    Email: Admin@gmail.com</p>
+                                <h6> ادراه المستشفي </h6>
+                                <p>القاهرة<br>
+                                    Tel No: 01019851622<br>
+                                    Email: mohamedemadhu01019@gmail.com</p>
                             </div><!-- billed-from -->
                         </div><!-- invoice-header -->
                         <div class="row mg-t-20">
@@ -46,9 +46,11 @@
                                 {{--                                <p class="invoice-info-row"><span>اسم الخدمه</span> <span>{{$single_invoice->Service->name}}</span></p> --}}
                                 {{--                                <p class="invoice-info-row"><span>اسم المريض</span> <span>{{$single_invoice->patient->name}}</span></p> --}}
                                 <p class="invoice-info-row"><span>تاريخ الفاتوره</span>
-                                    <span>{{ Request::get('invoice_date') }}</span></p>
+                                    <span>{{ Request::get('invoice_date') }}</span>
+                                </p>
                                 <p class="invoice-info-row"><span>الدكتور</span>
-                                    <span></span>{{ Request::get('doctor_id') }}</p>
+                                    <span></span>{{ Request::get('doctor_id') }}
+                                </p>
                                 <p class="invoice-info-row"><span>القسم</span> <span></span>{{ Request::get('section_id') }}
                                 </p>
                             </div>

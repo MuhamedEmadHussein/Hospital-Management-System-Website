@@ -1,6 +1,6 @@
 <button class="btn btn-primary pull-right" wire:click="show_form_add" type="button">اضافة فاتورة جديدة </button><br><br>
 <div class="table-responsive">
-    <table class="table text-md-nowrap" id="example2" data-page-length="50"style="text-align: center">
+    <table class="table text-md-nowrap" id="example1" data-page-length="50"style="text-align: center">
         <thead>
             <tr>
                 <th>#</th>
@@ -19,7 +19,6 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach ($single_invoices as $single_invoice)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
@@ -37,6 +36,7 @@
                     <td>
                         <button wire:click="edit({{ $single_invoice->id }})" class="btn btn-primary btn-sm"><i
                                 class="fa fa-edit"></i></button>
+
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                             data-target="#delete_invoice{{ $single_invoice->id }}">
                             <i class="fa fa-trash"></i>
@@ -48,7 +48,6 @@
                 @include('livewire.single_invoices.delete')
             @endforeach
     </table>
-
 
 
 </div>

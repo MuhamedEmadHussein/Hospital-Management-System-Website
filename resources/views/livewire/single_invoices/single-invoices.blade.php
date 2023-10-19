@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col">
                     <label>اسم المريض</label>
-                    <select wire:model="patient_id" class="form-control" required>
+                    <select wire:model="patient_id" class="form-control" id="patient_id" required>
                         <option value="">-- اختار من القائمة --</option>
                         @foreach ($Patients as $Patient)
                             <option value="{{ $Patient->id }}">{{ $Patient->name }}</option>
@@ -35,8 +35,8 @@
 
                 <div class="col">
                     <label>اسم الدكتور</label>
-                    <select wire:model="doctor_id" wire:change="get_section" class="form-control"
-                        id="exampleFormControlSelect1" required>
+                    <select wire:model="doctor_id" wire:change="get_section" class="form-control" id="doctor_id"
+                        required>
                         <option value="">-- اختار من القائمة --</option>
                         @foreach ($Doctors as $Doctor)
                             <option value="{{ $Doctor->id }}">{{ $Doctor->name }}</option>
@@ -47,7 +47,7 @@
 
                 <div class="col">
                     <label>القسم</label>
-                    <input wire:model="section_id" type="text" class="form-control" readonly>
+                    <input wire:model="section_id" type="text" class="form-control" id="section_id" readonly>
                 </div>
 
                 <div class="col">
@@ -88,8 +88,10 @@
                                         <tr>
                                             <th scope="row">1</th>
                                             <td>
+
                                                 <select wire:model="Service_id" class="form-control"
-                                                    wire:change="get_price" id="exampleFormControlSelect1">
+                                                    wire:change="get_price" id="service_id">
+
                                                     <option value="">-- اختار الخدمة --</option>
                                                     @foreach ($Services as $Service)
                                                         <option value="{{ $Service->id }}">{{ $Service->name }}
@@ -97,11 +99,14 @@
                                                     @endforeach
                                                 </select>
                                             </td>
-                                            <td><input wire:model="price" type="text" class="form-control" readonly>
+                                            <td><input wire:model="price" type="text" class="form-control"
+                                                    id="price" readonly>
                                             </td>
-                                            <td><input wire:model="discount_value" type="text" class="form-control">
+                                            <td><input wire:model="discount_value" type="text" id="discount_value"
+                                                    class="form-control">
                                             </td>
-                                            <th><input wire:model="tax_rate" type="text" class="form-control"></th>
+                                            <th><input wire:model="tax_rate" type="text" id="tax_rate"
+                                                    class="form-control"></th>
                                             <td><input type="text" class="form-control" value="{{ $tax_value }}"
                                                     readonly></td>
                                             <td><input type="text" class="form-control" readonly
