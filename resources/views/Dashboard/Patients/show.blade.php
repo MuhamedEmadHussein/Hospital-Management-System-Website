@@ -215,9 +215,11 @@
                                                             <td class="alert alert-primary">
                                                                 {{ number_format($credit = $Patient_accounts->sum('credit'), 2) }}
                                                             </td>
-                                                            <td class="alert alert-danger">
-                                                                <span class="text-danger"> {{ $Debit - $credit }}
-                                                                    {{ $Debit - $credit > 0 ? 'مدين' : 'دائن' }}</span>
+                                                            <td
+                                                                class="{{ $Debit - $credit > 0 ? 'alert alert-danger' : 'alert alert-success' }}">
+                                                                <span class="text-dark">
+                                                                    {{ $Debit - $credit > 0 ? $Debit - $credit : ($Debit - $credit < 0 ? $credit - $Debit : '') }}
+                                                                    {{ $Debit - $credit > 0 ? 'مدين' : ($Debit - $credit < 0 ? 'دائن' : '0') }}</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>

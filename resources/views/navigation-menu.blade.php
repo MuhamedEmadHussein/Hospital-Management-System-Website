@@ -18,6 +18,12 @@
                         </a>
                     @endif
 
+                    @if (auth('doctor')->check())
+                        <a href="{{ route('dashboard.doctor') }}">
+                            <x-application-mark class="block h-9 w-auto" />
+                        </a>
+                    @endif
+
                 </div>
 
                 <!-- Navigation Links -->
@@ -30,6 +36,12 @@
 
                     @if (auth('admin')->check())
                         <x-nav-link href="{{ route('dashboard.admin') }}" :active="request()->routeIs('dashboard.admin')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                    @endif
+
+                    @if (auth('doctor')->check())
+                        <x-nav-link href="{{ route('dashboard.doctor') }}" :active="request()->routeIs('dashboard.doctor')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     @endif
@@ -149,6 +161,18 @@
                                 </form>
                             @endif
 
+                            @if (auth('doctor')->check())
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout.doctor') }}" x-data>
+                                    @csrf
+
+                                    <x-dropdown-link href="{{ route('logout.doctor') }}"
+                                        @click.prevent="$root.submit();">
+                                        {{ __('Log Out') }}
+                                    </x-dropdown-link>
+                                </form>
+                            @endif
+
                             @if (auth('admin')->check())
                                 <form method="POST" action="{{ route('logout.admin') }}" x-data>
                                     @csrf
@@ -191,6 +215,12 @@
 
             @if (auth('admin')->check())
                 <x-responsive-nav-link href="{{ route('dashboard.admin') }}" :active="request()->routeIs('dashboard.admin')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
+            @endif
+
+            @if (auth('doctor')->check())
+                <x-responsive-nav-link href="{{ route('dashboard.doctor') }}" :active="request()->routeIs('dashboard.doctor')">
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
             @endif
@@ -240,6 +270,16 @@
                         @csrf
 
                         <x-responsive-nav-link href="{{ route('logout.admin') }}" @click.prevent="$root.submit();">
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
+                @endif
+
+                @if (auth('doctor')->check())
+                    <form method="POST" action="{{ route('logout.doctor') }}" x-data>
+                        @csrf
+
+                        <x-responsive-nav-link href="{{ route('logout.doctor') }}" @click.prevent="$root.submit();">
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
                     </form>

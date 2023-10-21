@@ -1,12 +1,5 @@
 <div>
 
-    @if ($catchError)
-        <div class="alert alert-danger" id="success-danger">
-            <button type="button" class="close" data-dismiss="alert">x</button>
-            {{ $catchError }}
-        </div>
-    @endif
-
     @if ($InvoiceSaved)
         <div class="alert alert-info">تم حفظ البيانات بنجاح.</div>
     @endif
@@ -16,15 +9,14 @@
     @endif
 
     @if ($show_table)
-
-        @include('livewire.single_invoices.Table')
+        @include('livewire.group_invoices.Table')
     @else
         <form wire:submit.prevent="store" autocomplete="off">
             @csrf
             <div class="row">
                 <div class="col">
                     <label>اسم المريض</label>
-                    <select wire:model="patient_id" class="form-control" id="patient_id" required>
+                    <select wire:model="patient_id" class="form-control" required>
                         <option value="">-- اختار من القائمة --</option>
                         @foreach ($Patients as $Patient)
                             <option value="{{ $Patient->id }}">{{ $Patient->name }}</option>
@@ -35,8 +27,8 @@
 
                 <div class="col">
                     <label>اسم الدكتور</label>
-                    <select wire:model="doctor_id" wire:change="get_section" class="form-control" id="doctor_id"
-                        required>
+                    <select wire:model="doctor_id" wire:change="get_section" class="form-control"
+                        id="exampleFormControlSelect1" required>
                         <option value="">-- اختار من القائمة --</option>
                         @foreach ($Doctors as $Doctor)
                             <option value="{{ $Doctor->id }}">{{ $Doctor->name }}</option>
@@ -47,7 +39,7 @@
 
                 <div class="col">
                     <label>القسم</label>
-                    <input wire:model="section_id" type="text" class="form-control" id="section_id" readonly>
+                    <input wire:model="section_id" type="text" class="form-control" readonly>
                 </div>
 
                 <div class="col">
@@ -88,25 +80,20 @@
                                         <tr>
                                             <th scope="row">1</th>
                                             <td>
-
-                                                <select wire:model="Service_id" class="form-control"
-                                                    wire:change="get_price" id="Service_id">
-
+                                                <select wire:model="Group_id" class="form-control"
+                                                    wire:change="get_price" id="exampleFormControlSelect1">
                                                     <option value="">-- اختار الخدمة --</option>
-                                                    @foreach ($Services as $Service)
-                                                        <option value="{{ $Service->id }}">{{ $Service->name }}
-                                                        </option>
+                                                    @foreach ($Groups as $Group)
+                                                        <option value="{{ $Group->id }}">{{ $Group->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </td>
-                                            <td><input wire:model="price" type="text" class="form-control"
-                                                    id="price" readonly>
+                                            <td><input wire:model="price" type="text" class="form-control" readonly>
                                             </td>
-                                            <td><input wire:model="discount_value" type="text" id="discount_value"
-                                                    class="form-control">
-                                            </td>
-                                            <th><input wire:model="tax_rate" type="text" id="tax_rate"
-                                                    class="form-control"></th>
+                                            <td><input wire:model="discount_value" type="text" class="form-control"
+                                                    readonly></td>
+                                            <th><input wire:model="tax_rate" type="text" class="form-control"
+                                                    readonly></th>
                                             <td><input type="text" class="form-control" value="{{ $tax_value }}"
                                                     readonly></td>
                                             <td><input type="text" class="form-control" readonly
@@ -119,11 +106,8 @@
                     </div><!-- bd -->
                 </div>
             </div>
-
             <input class="btn btn-outline-success" type="submit" value="تاكيد البيانات">
         </form>
-
     @endif
-
 
 </div>

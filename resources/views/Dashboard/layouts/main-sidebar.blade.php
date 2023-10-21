@@ -132,13 +132,6 @@
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route('Patients.create') }}">اضافة مريض</a></li>
                     <li><a class="slide-item" href="{{ route('Patients.index') }}">قائمة المرضي</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'breadcrumbs')) }}">Breadcrumbs</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'buttons')) }}">Buttons</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'badge')) }}">Badge</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'dropdown')) }}">Dropdown</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'thumbnails')) }}">Thumbnails</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'list-group')) }}">List Group</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'navigation')) }}">Navigation</a></li>
                 </ul>
             </li>
             <li class="slide">
@@ -158,16 +151,7 @@
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route('single_invoices') }}">فاتورة خدمة مفردة</a>
                     </li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'carousel')) }}">Carousel</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'collapse')) }}">Collapse</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'modals')) }}">Modals</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'timeline')) }}">Timeline</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'sweet-alert')) }}">Sweet Alert</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'rating')) }}">Ratings</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'counters')) }}">Counters</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'search')) }}">Search</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'userlist')) }}">Userlist</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'blog')) }}">Blog</a></li>
+                    <li><a class="slide-item" href="{{ route('group_invoices') }}">فاتورة مجموعة خدمات</a></li>
                 </ul>
             </li>
             <li class="slide">
@@ -181,10 +165,6 @@
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route('Receipt.index') }}">سند قبض</a></li>
                     <li><a class="slide-item" href="{{ route('Payment.index') }}">سند صرف</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'mail-read')) }}">Read-mail</a></li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'mail-settings')) }}">mail-settings</a>
-                    </li>
-                    <li><a class="slide-item" href="{{ url('/' . ($page = 'chat')) }}">Chat</a></li>
                 </ul>
             </li>
             <li class="slide">

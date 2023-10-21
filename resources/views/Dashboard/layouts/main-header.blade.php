@@ -320,6 +320,16 @@
                                 @csrf
                             </form>
                         @endif
+
+                        @if (auth('doctor')->check())
+                            <a class="dropdown-item" href="{{ route('logout.doctor') }}"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                    class="bx bx-log-out"></i>تسجيل خروج</a>
+                            <form id="logout-form" action="{{ route('logout.doctor') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+                        @endif
                     </div>
                 </div>
                 <div class="dropdown main-header-message right-toggle">

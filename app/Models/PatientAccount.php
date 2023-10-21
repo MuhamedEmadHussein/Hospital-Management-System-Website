@@ -14,7 +14,7 @@ class PatientAccount extends Model
     protected $guarded = [];
     public function invoice()
     {
-        return $this->belongsTo(Single_Invoice::class,'single_invoice_id');
+        return $this->belongsTo(Invoice::class,'invoice_id');
     }
 
     public function ReceiptAccount()

@@ -48,7 +48,7 @@ Route::group(
         Route::get('/dashboard/admin', function () {
             return view('Dashboard.Admin.dashboard');
         })->middleware(['auth:admin'])->name('dashboard.admin');
-
+        
         //###########################################################################################
         Route::middleware(['auth:admin'])->group(function(){
 
@@ -61,12 +61,17 @@ Route::group(
             Route::resource('Patients',PatientController::class);
             Route::resource('Receipt',ReceiptAccountController::class);
             Route::resource('Payment',PaymentAccountController::class);
+
             Route::post('update_password',[DoctorController::class,'update_password'])->name('update_password');
             Route::post('update_status',[DoctorController::class,'update_status'])->name('update_status');
+            
             Route::view('Add_GroupServices','livewire.GroupServices.include_create')->name('Add_GroupServices');
             Route::view('single_invoices','livewire.single_invoices.index')->name('single_invoices');
             Route::view('Print_single_invoices','livewire.single_invoices.print')->name('Print_single_invoices');
-
+            Route::view('group_invoices','livewire.group_invoices.index')->name('group_invoices');
+            Route::view('group_Print_single_invoices','livewire.group_invoices.print')->name('group_Print_single_invoices');
+            
+            
         });
 
         require __DIR__.'/web.php';
