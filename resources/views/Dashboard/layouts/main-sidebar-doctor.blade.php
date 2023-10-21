@@ -50,8 +50,8 @@
                         class="angle fe fe-chevron-down"></i></a>
                 <ul class="slide-menu">
                     <li><a class="slide-item" href="{{ route('invoices.index') }}">قائمة الكشوفات</a></li>
-                    <li><a class="slide-item" href="#">قائمة الكشوفات المكتملة</a></li>
-                    <li><a class="slide-item" href="#">قائمة المراجعات</a></li>
+                    <li><a class="slide-item" href="{{ route('completedInvoices') }}">قائمة الكشوفات المكتملة</a></li>
+                    <li><a class="slide-item" href="{{ route('reviewInvoices') }}">قائمة المراجعات</a></li>
                 </ul>
             </li>
             <li class="slide">

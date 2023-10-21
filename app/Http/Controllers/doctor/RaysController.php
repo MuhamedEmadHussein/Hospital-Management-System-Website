@@ -3,33 +3,23 @@
 namespace App\Http\Controllers\doctor;
 
 use App\Http\Controllers\Controller;
-use App\Interfaces\doctor_dashboard\InvoicesRepositoryInterface;
+use App\Interfaces\doctor_dashboard\RaysRepositoryInterface;
 use Illuminate\Http\Request;
 
-class InvoicesController extends Controller
+class RaysController extends Controller
 {
-    private $invoices;
+    private $rays;
   
-    public function __construct(InvoicesRepositoryInterface $invoices)
+    public function __construct(RaysRepositoryInterface $rays)
     {
-        $this->invoices = $invoices;
+        $this->rays = $rays;
     }
-    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
-        return $this->invoices->index();
-    }
-
-    public function reviewInvoices(){
-        return $this->invoices->reviewInvoices();    
-    }
-    public function completedInvoices(){
-        return $this->invoices->completedInvoices();    
-
     }
 
     /**
@@ -46,12 +36,13 @@ class InvoicesController extends Controller
     public function store(Request $request)
     {
         //
+        return $this->rays->store($request);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
         //
     }
@@ -67,16 +58,20 @@ class InvoicesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         //
+        return $this->rays->update($request,$id);
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         //
+        return $this->rays->destroy($id);
+
     }
 }

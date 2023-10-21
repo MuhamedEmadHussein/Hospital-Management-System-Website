@@ -1,6 +1,6 @@
 @extends('Dashboard.layouts.master-doctor')
 @section('title')
-    الكشوفات
+    المراجعات
 @stop
 @section('css')
     <!-- Internal Data table css -->
@@ -22,7 +22,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الكشوفات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
+                <h4 class="content-title mb-0 my-auto">المراجعات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
                     الفواتير</span>
             </div>
         </div>
@@ -51,6 +51,7 @@
                                     <th>قيمة الضريبة</th>
                                     <th>الاجمالي مع الضريبة</th>
                                     <th>حالة الفاتورة</th>
+                                    <th>تاريخ المراجعة</th>
                                     <th>العمليات</th>
                                 </tr>
                             </thead>
@@ -60,8 +61,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $invoice->invoice_date }}</td>
                                         <td>{{ $invoice->Service->name ?? $invoice->Group->name }}</td>
-                                        <td>
-                                            <a
+                                        <td><a
                                                 href="{{ route('patient_details', $invoice->patient_id) }}">{{ $invoice->Patient->name }}</a>
                                         </td>
                                         <td>{{ number_format($invoice->price, 2) }}</td>
@@ -79,8 +79,9 @@
                                             @endif
                                         </td>
 
+                                        <td>{{ \App\Models\Diagnostic::where(['invoice_id' => $invoice->id])->latest()->first()->review_date }}
+                                        </td>
                                         <td>
-
                                             <div class="dropdown">
                                                 <button aria-expanded="false" aria-haspopup="true"
                                                     class="btn ripple btn-outline-primary btn-sm" data-toggle="dropdown"
@@ -106,6 +107,7 @@
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#delete"><i
                                                             class="text-danger  ti-trash"></i>&nbsp;&nbsp;حذف البيانات</a>
+
                                                 </div>
                                             </div>
                                         </td>
@@ -134,10 +136,10 @@
 @section('js')
 
 
-
     <!--Internal  Notify js -->
     <script src="{{ URL::asset('dashboard/plugins/notify/js/notifIt.js') }}"></script>
     <script src="{{ URL::asset('/plugins/notify/js/notifit-custom.js') }}"></script>
+
 
     <!--Internal  Datepicker js -->
     <script src="{{ URL::asset('dashboard/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
@@ -157,12 +159,9 @@
     <script src="{{ URL::asset('dashboard/plugins/pickerjs/picker.min.js') }}"></script>
     <!-- Internal form-elements js -->
     <script src="{{ URL::asset('dashboard/js/form-elements.js') }}"></script>
-
-
     <script>
         $('#review_date').datetimepicker({
 
         })
     </script>
-
 @endsection

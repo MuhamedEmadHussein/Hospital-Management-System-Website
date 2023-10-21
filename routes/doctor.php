@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\doctor\DiagnosticsController;
 use App\Http\Controllers\doctor\InvoicesController;
+use App\Http\Controllers\doctor\PatientDetailsController;
+use App\Http\Controllers\doctor\RaysController;
 use Illuminate\Support\Facades\Route;
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -32,7 +35,16 @@ Route::group(
             
             Route::middleware(['auth:doctor'])->group(function(){
 
+                Route::get('/reviewInvoices',[InvoicesController::class, 'reviewInvoices'])->name('reviewInvoices');
+                Route::get('/completedInvoices',[InvoicesController::class, 'completedInvoices'])->name('completedInvoices');
+                Route::post('/add_review',[DiagnosticsController::class,'addReview'])->name('add_review'); 
+                Route::get('/patient_details/{id}',[PatientDetailsController::class,'index'])->name('patient_details');
+                
                 Route::resource('invoices',InvoicesController::class);
+                Route::resource('Diagnostics',DiagnosticsController::class);
+                Route::resource('rays',RaysController::class);
+
+
 
                 
             });
