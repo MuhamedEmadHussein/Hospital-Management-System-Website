@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\DoctorController;
+use App\Http\Controllers\Auth\RayEmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +40,8 @@ Route::post('/logout/admin', [AdminController::class, 'destroy'])->middleware('a
 Route::post('/login/doctor', [DoctorController::class, 'store'])->middleware('guest')->name('login.doctor');
 
 Route::post('/logout/doctor', [DoctorController::class, 'destroy'])->middleware('auth:doctor')->name('logout.doctor');
+
+//################################## Route Ray Employee ##############################################
+Route::post('/login/ray_employee', [RayEmployeeController::class, 'store'])->middleware('guest')->name('login.ray_employee');
+
+Route::post('/logout/ray_employee', [RayEmployeeController::class, 'destroy'])->middleware('auth:ray_employee')->name('logout.ray_employee');

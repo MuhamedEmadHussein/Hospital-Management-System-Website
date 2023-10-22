@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\InsuranceController;
 use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\PaymentAccountController;
+use App\Http\Controllers\Dashboard\RayEmployeeController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
 use App\Livewire\SingleInvoices;
@@ -48,6 +49,11 @@ Route::group(
         Route::get('/dashboard/admin', function () {
             return view('Dashboard.Admin.dashboard');
         })->middleware(['auth:admin'])->name('dashboard.admin');
+
+        //##################### Dashboard Ray Employee #################################################
+        Route::get('/dashboard/ray_employee', function () {
+            return view('Dashboard.ray_employee.dashboard');
+        })->middleware(['auth:ray_employee'])->name('dashboard.ray_employee');
         
         //###########################################################################################
         Route::middleware(['auth:admin'])->group(function(){
@@ -61,7 +67,8 @@ Route::group(
             Route::resource('Patients',PatientController::class);
             Route::resource('Receipt',ReceiptAccountController::class);
             Route::resource('Payment',PaymentAccountController::class);
-
+            Route::resource('ray_employee',RayEmployeeController::class);
+            
             Route::post('update_password',[DoctorController::class,'update_password'])->name('update_password');
             Route::post('update_status',[DoctorController::class,'update_status'])->name('update_status');
             
@@ -73,6 +80,7 @@ Route::group(
             
             
         });
+        Route::get('rays/invoices',[RayEmployeeController::class,'showInvoices'])->name('ray_employee.invoices');
 
         require __DIR__.'/web.php';
 

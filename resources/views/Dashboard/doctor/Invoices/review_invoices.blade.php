@@ -1,4 +1,4 @@
-@extends('Dashboard.layouts.master-doctor')
+@extends('Dashboard.layouts.master')
 @section('title')
     المراجعات
 @stop
@@ -115,7 +115,7 @@
                                     @include('Dashboard.Doctor.invoices.add_diagnosis')
                                     @include('Dashboard.Doctor.invoices.add_review')
                                     @include('Dashboard.Doctor.invoices.xray_conversion')
-                                    {{-- @include('Dashboard.Doctor.invoices.Laboratorie_conversion') --}}
+                                    @include('Dashboard.Doctor.invoices.Laboratorie_conversion')
                                 @endforeach
                             </tbody>
                         </table>

@@ -7,16 +7,19 @@ use App\Interfaces\Insurances\InsurancesRepositoryInterface;
 use App\Interfaces\Categories\CategoriesRepositoryInterface;
 use App\Interfaces\doctor_dashboard\DiagnosticRepositoryInterface;
 use App\Interfaces\doctor_dashboard\InvoicesRepositoryInterface;
+use App\Interfaces\doctor_dashboard\LaboratoriesRepostoryInterface;
 use App\Interfaces\doctor_dashboard\RaysRepositoryInterface;
 use App\Interfaces\Doctors\DoctorsRepositoryInterface;
 use App\Interfaces\Finance\PaymentRepositoryInterface;
 use App\Interfaces\Finance\ReceiptRepositoryInterface;
 use App\Interfaces\Patients\PatientsRepositoryInterface;
+use App\Interfaces\RayEmployee\RayEmployeeRepositoryInterface;
 use App\Interfaces\Services\SingleServicesRepositoryInterface;
 use App\Repository\Ambulances\AmbulanceRepository;
 use App\Repository\Categories\CategoryRepository;
 use App\Repository\doctor_dashboard\DiagnosticRepository;
 use App\Repository\doctor_dashboard\InvoicesRepository;
+use App\Repository\doctor_dashboard\LaboratoriesRepostory;
 use App\Repository\doctor_dashboard\RaysRepository;
 use App\Repository\Doctors\DoctorRepository;
 use App\Repository\Finance\PaymentRepository;
@@ -25,6 +28,7 @@ use App\Repository\Services\SingleServiceRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repository\Insurances\InsuranceRepository;
 use App\Repository\Patients\PatientRepository;
+use App\Repository\RayEmployee\RayEmployeeRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -45,6 +49,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(InvoicesRepositoryInterface::class, InvoicesRepository::class);
         $this->app->bind(DiagnosticRepositoryInterface::class, DiagnosticRepository::class);
         $this->app->bind(RaysRepositoryInterface::class, RaysRepository::class);
+        $this->app->bind(LaboratoriesRepostoryInterface::class, LaboratoriesRepostory::class);
+        $this->app->bind(RayEmployeeRepositoryInterface::class, RayEmployeeRepository::class);
 
     }
 

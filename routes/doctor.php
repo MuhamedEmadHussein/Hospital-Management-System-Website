@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\doctor\DiagnosticsController;
 use App\Http\Controllers\doctor\InvoicesController;
+use App\Http\Controllers\doctor\LaboratoriesController;
 use App\Http\Controllers\doctor\PatientDetailsController;
 use App\Http\Controllers\doctor\RaysController;
 use Illuminate\Support\Facades\Route;
@@ -43,7 +44,7 @@ Route::group(
                 Route::resource('invoices',InvoicesController::class);
                 Route::resource('Diagnostics',DiagnosticsController::class);
                 Route::resource('rays',RaysController::class);
-
+                Route::resource('Laboratories',LaboratoriesController::class);
 
 
                 

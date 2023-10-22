@@ -309,9 +309,7 @@
                                 style="display: none;">
                                 @csrf
                             </form>
-                        @endif
-
-                        @if (auth('admin')->check())
+                        @elseif (auth('admin')->check())
                             <a class="dropdown-item" href="{{ route('logout.admin') }}"
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                                     class="bx bx-log-out"></i>تسجيل خروج</a>
@@ -319,13 +317,19 @@
                                 style="display: none;">
                                 @csrf
                             </form>
-                        @endif
-
-                        @if (auth('doctor')->check())
+                        @elseif (auth('doctor')->check())
                             <a class="dropdown-item" href="{{ route('logout.doctor') }}"
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                                     class="bx bx-log-out"></i>تسجيل خروج</a>
                             <form id="logout-form" action="{{ route('logout.doctor') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+                        @elseif (auth('ray_employee')->check())
+                            <a class="dropdown-item" href="{{ route('logout.ray_employee') }}"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                    class="bx bx-log-out"></i>تسجيل خروج</a>
+                            <form id="logout-form" action="{{ route('logout.ray_employee') }}" method="POST"
                                 style="display: none;">
                                 @csrf
                             </form>

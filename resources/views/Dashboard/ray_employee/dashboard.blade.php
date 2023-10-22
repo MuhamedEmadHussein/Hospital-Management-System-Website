@@ -10,7 +10,7 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="left-content">
             <div>
-                <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">لوحة تحكم الدكتور</h2>
+                <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">لوحة تحكم موظف الأشعة</h2>
             </div>
         </div>
     </div>

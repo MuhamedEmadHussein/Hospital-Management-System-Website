@@ -1,4 +1,4 @@
-@extends('Dashboard.layouts.master-doctor')
+@extends('Dashboard.layouts.master')
 @section('title')
     الكشوفات
 @stop
@@ -106,6 +106,7 @@
                                                     <a class="dropdown-item" href="#" data-toggle="modal"
                                                         data-target="#delete"><i
                                                             class="text-danger  ti-trash"></i>&nbsp;&nbsp;حذف البيانات</a>
+
                                                 </div>
                                             </div>
                                         </td>
@@ -113,7 +114,7 @@
                                     @include('Dashboard.Doctor.invoices.add_diagnosis')
                                     @include('Dashboard.Doctor.invoices.add_review')
                                     @include('Dashboard.Doctor.invoices.xray_conversion')
-                                    {{-- @include('Dashboard.Doctor.invoices.Laboratorie_conversion') --}}
+                                    @include('Dashboard.Doctor.invoices.Laboratorie_conversion')
                                 @endforeach
                             </tbody>
                         </table>

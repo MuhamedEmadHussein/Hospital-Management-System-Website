@@ -64,8 +64,8 @@
                                                         {{ trans('Dashboard/login_trans.admin') }}
                                                     </option>
                                                     <option value="doctor">الدخول دكتور</option>
-                                                    {{-- <option value="ray_employee">موظف اشعة</option>
-                                                    <option value="laboratorie_employee">موظف مختبر</option> --}}
+                                                    <option value="ray_employee">موظف اشعة</option>
+                                                    {{-- <option value="laboratorie_employee">موظف مختبر</option> --}}
                                                 </select>
                                             </div>
 
@@ -194,30 +194,43 @@
                                             </div>
 
                                             {{-- form RayEmployee --}}
-                                            {{-- <div class="panel" id="ray_employee">
+                                            <div class="panel" id="ray_employee">
                                                 <h2>الدخول موظف اشعة</h2>
                                                 <form method="POST" action="{{ route('login.ray_employee') }}">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label>Email</label> <input  class="form-control" placeholder="Enter your email" type="email" name="email" :value="old('email')" required autofocus>
+                                                        <label>Email</label> <input class="form-control"
+                                                            placeholder="Enter your email" type="email" name="email"
+                                                            :value="old('email')" required autofocus>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label>Password</label> <input class="form-control" placeholder="Enter your password"   type="password"name="password" required autocomplete="current-password" >
-                                                    </div><button type="submit" class="btn btn-main-primary btn-block">Sign In</button>
+                                                        <label>Password</label> <input class="form-control"
+                                                            placeholder="Enter your password"
+                                                            type="password"name="password" required
+                                                            autocomplete="current-password">
+                                                    </div><button type="submit"
+                                                        class="btn btn-main-primary btn-block">Sign In</button>
                                                     <div class="row row-xs">
                                                         <div class="col-sm-6">
-                                                            <button class="btn btn-block"><i class="fab fa-facebook-f"></i> Signup with Facebook</button>
+                                                            <button class="btn btn-block"><i
+                                                                    class="fab fa-facebook-f"></i> Signup with
+                                                                Facebook</button>
                                                         </div>
                                                         <div class="col-sm-6 mg-t-10 mg-sm-t-0">
-                                                            <button class="btn btn-info btn-block"><i class="fab fa-twitter"></i> Signup with Twitter</button>
+                                                            <button class="btn btn-info btn-block"><i
+                                                                    class="fab fa-twitter"></i> Signup with
+                                                                Twitter</button>
                                                         </div>
                                                     </div>
                                                 </form>
                                                 <div class="main-signin-footer mt-5">
                                                     <p><a href="">Forgot password?</a></p>
-                                                    <p>Don't have an account? <a href="{{ url('/' . $page='signup') }}">Create an Account</a></p>
+                                                    <p>Don't have an account? <a
+                                                            href="{{ url('/' . ($page = 'signup')) }}">Create an
+                                                            Account</a>
+                                                    </p>
                                                 </div>
-                                            </div> --}}
+                                            </div>
 
                                             {{-- form laboratorie_employee --}}
                                             {{-- <div class="panel" id="laboratorie_employee">
