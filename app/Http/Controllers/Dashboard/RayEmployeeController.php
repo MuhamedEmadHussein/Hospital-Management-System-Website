@@ -56,11 +56,17 @@ class RayEmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function editRay($id)
     {
         //
+        return $this->ray_employee->editRay($id);
     }
 
+    public function addRayDiagnosis(Request $request,$id){
+
+        return $this->ray_employee->addRayDiagnosis($request,$id);
+        
+    }
     /**
      * Update the specified resource in storage.
      */

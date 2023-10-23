@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             DoctorSeeder::class,
             ImageSeeder::class,
+            PatientSeeder::class,
+            RayEmployeeSeeder::class,
+            ServiceSeeder::class,
         ]);
     }
 }

@@ -55,6 +55,7 @@ Route::group(
             return view('Dashboard.ray_employee.dashboard');
         })->middleware(['auth:ray_employee'])->name('dashboard.ray_employee');
         
+
         //###########################################################################################
         Route::middleware(['auth:admin'])->group(function(){
 
@@ -80,8 +81,17 @@ Route::group(
             
             
         });
-        Route::get('rays/invoices',[RayEmployeeController::class,'showInvoices'])->name('ray_employee.invoices');
 
+        Route::prefix('rays')->group(function(){
+        
+            Route::middleware(['auth:ray_employee'])->group(function(){
+                Route::get('/addDiagnosis/{id}',[RayEmployeeController::class,'editRay'])->name('ray_employee.edit');
+                Route::get('/invoices',[RayEmployeeController::class,'showInvoices'])->name('ray_employee.invoices');
+                Route::put('/add_ray_diagnosis/{id}',[RayEmployeeController::class,'addRayDiagnosis'])->name('ray_employee.add_ray_diagnosis');
+        
+            });
+        });
+       
         require __DIR__.'/web.php';
 
     });
