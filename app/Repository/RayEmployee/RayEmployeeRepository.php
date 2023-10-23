@@ -4,11 +4,15 @@ namespace App\Repository\RayEmployee;
 use App\Interfaces\RayEmployee\RayEmployeeRepositoryInterface;
 use App\Models\Ray;
 use App\Models\RayEmployee;
+use App\Traits\UploadImageTrait;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class RayEmployeeRepository implements RayEmployeeRepositoryInterface{
+
+    use UploadImageTrait;
     public function index(){
         $ray_employees = RayEmployee::all();
         return view('Dashboard.ray_employee.index',compact('ray_employees'));
@@ -45,21 +49,36 @@ class RayEmployeeRepository implements RayEmployeeRepositoryInterface{
     }
 
     public function addRayDiagnosis($request, $id){
+        DB::beginTransaction();
+
         try{
 
-           $ray = Ray::findOrFail($id);
+            $ray = Ray::findOrFail($id);
 
-           $ray->update([
-                'employee_id' => Auth::user()->id,
-                'description_employee' => $request->description_employee,
-                'case' => 1
-           ]);
+            $ray->update([
+                    'employee_id' => Auth::user()->id,
+                    'description_employee' => $request->description_employee,
+                    'case' => 1
+            ]);
+
+            if( $request->hasFile( 'photos' ) ) {
+
+                foreach ($request->photos as $photo) {
+
+                    $this->verifyAndStoreImageForeach($photo,'Rays','upload_image',$ray->id,'App\Models\Ray');
+
+                }
+    
+            }
+          
+           DB::commit();
 
            session()->flash('add');
 
-            return redirect()->back();
+           return redirect()->route('ray_employee.invoices');
             
         }catch(\Exception $e){
+            DB::rollBack();
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
         }
