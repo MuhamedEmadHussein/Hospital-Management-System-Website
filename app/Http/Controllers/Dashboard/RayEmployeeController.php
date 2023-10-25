@@ -27,6 +27,9 @@ class RayEmployeeController extends Controller
         return $this->ray_employee->showInvoices();
     }
 
+    public function showCompletedInvoices(){
+        return $this->ray_employee->showCompletedInvoices();
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -48,9 +51,14 @@ class RayEmployeeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
+        return $this->ray_employee->show($id);
+    }
+
+    public function viewRays($id){
+        return $this->ray_employee->viewRays($id);
     }
 
     /**

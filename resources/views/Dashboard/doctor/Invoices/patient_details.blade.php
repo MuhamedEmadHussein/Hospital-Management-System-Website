@@ -1,6 +1,7 @@
 @extends('Dashboard.layouts.master')
 @section('css')
     <link href="{{ URL::asset('dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 @endsection
 @section('title')
     معلومات المريض
@@ -129,9 +130,9 @@
                                                                         </td>
                                                                     @else
                                                                         <td>
-                                                                            <a class="modal-effect btn btn-sm btn-warning"
-                                                                                href="{{ route('invoices.show', $patient_ray->id) }}"><i
-                                                                                    class="fas fa-binoculars"></i></a>
+                                                                            <a class="modal-effect btn btn-sm btn-secondary"
+                                                                                href="{{ route('ray_employee.show_file', $patient_ray->id) }}"><i
+                                                                                    class="fas fa-solid fa-eye"></i></a>
                                                                         </td>
                                                                     @endif
                                                                 @endif

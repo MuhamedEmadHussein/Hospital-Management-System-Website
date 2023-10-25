@@ -20,7 +20,12 @@ class RayEmployeeRepository implements RayEmployeeRepositoryInterface{
     }
 
     public function showInvoices(){
-        $invoices = Ray::all();
+        $invoices = Ray::where('case',0)->get();
+        return view('Dashboard.ray_employee.invoices.index',compact('invoices'));
+           
+    }
+    public function showCompletedInvoices(){
+        $invoices = Ray::where('case',1)->get();
         return view('Dashboard.ray_employee.invoices.index',compact('invoices'));
            
     }
@@ -119,5 +124,30 @@ class RayEmployeeRepository implements RayEmployeeRepositoryInterface{
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
         }
+    }
+    
+    public function show($id){
+
+        $ray = Ray::where('id', $id)
+          ->where('doctor_id', Auth::user()->id)
+          ->first();
+
+        if ($ray != null) {
+            return view('Dashboard.doctor.invoices.view_rays', compact('ray'));
+        } else {
+            return redirect()->route('404');
+            
+        }
+        
+    }
+    public function viewRays($id){
+        $ray = Ray::where('patient_id', $id)->where('employee_id', Auth::user()->id)->first();
+        if($ray == null){
+            return redirect()->route('404');
+        }
+        $rays = Ray::where('patient_id', $id)->where('employee_id', Auth::user()->id)->get();
+        
+        return view('Dashboard.ray_employee.invoices.patient_details', compact('ray','rays'));
+
     }
 }

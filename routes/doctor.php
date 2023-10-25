@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\RayEmployeeController;
 use App\Http\Controllers\doctor\DiagnosticsController;
 use App\Http\Controllers\doctor\InvoicesController;
 use App\Http\Controllers\doctor\LaboratoriesController;
@@ -40,7 +41,8 @@ Route::group(
                 Route::get('/completedInvoices',[InvoicesController::class, 'completedInvoices'])->name('completedInvoices');
                 Route::post('/add_review',[DiagnosticsController::class,'addReview'])->name('add_review'); 
                 Route::get('/patient_details/{id}',[PatientDetailsController::class,'index'])->name('patient_details');
-                
+                Route::get('/show/{id}',[RayEmployeeController::class,'show'])->name('ray_employee.show_file');
+
                 Route::resource('invoices',InvoicesController::class);
                 Route::resource('Diagnostics',DiagnosticsController::class);
                 Route::resource('rays',RaysController::class);

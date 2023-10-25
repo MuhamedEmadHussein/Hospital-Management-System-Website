@@ -5,6 +5,7 @@
 @section('css')
     <link href="{{ URL::asset('dashboard/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
+
 @section('page-header')
     <!-- breadcrumb -->
     <div class="breadcrumb-header justify-content-between">
@@ -43,7 +44,14 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $invoice->created_at }}</td>
-                                        <td>{{ $invoice->Patient->name }}</td>
+                                        <td>
+                                            @if ($invoice->case == 0)
+                                                {{ $invoice->Patient->name }}
+                                            @else
+                                                <a href="{{ route('view_rays', $invoice->patient_id) }}">{{ $invoice->Patient->name }}
+                                                </a>
+                                            @endif
+                                        </td>
                                         <td>{{ $invoice->doctor->name }}</td>
                                         <td>{{ $invoice->description }}</td>
                                         <td>

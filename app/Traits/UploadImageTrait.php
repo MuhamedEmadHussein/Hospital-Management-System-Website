@@ -19,7 +19,7 @@ trait UploadImageTrait{
 
             $photo = $request->file($inputname);
             $name = Str::slug($request->input('name'));
-            $filename = $name. '.' . $photo->getClientOriginalExtension();
+            $filename = $name . '_' . time() . '.' . $photo->getClientOriginalExtension();
 
             // insert Image
             $Image = new Image();
@@ -38,11 +38,11 @@ trait UploadImageTrait{
     public function verifyAndStoreImageForeach($varforeach , $foldername , $disk, $imageable_id, $imageable_type) {
         // insert Image
         $Image = new Image();
-        $Image->filename = $varforeach->getClientOriginalName();
+        $Image->filename =  time() . '_' . $varforeach->getClientOriginalName();
         $Image->imageable_id = $imageable_id;
         $Image->imageable_type = $imageable_type;
         $Image->save();
-        return $varforeach->storeAs($foldername, $varforeach->getClientOriginalName(), $disk);
+        return $varforeach->storeAs($foldername, time() . '_' . $varforeach->getClientOriginalName(), $disk);
     }
 
 
