@@ -55,6 +55,11 @@ return [
             'driver' => 'session',
             'provider' => 'ray_employees',
         ],
+
+        'lab_employee' => [
+            'driver' => 'session',
+            'provider' => 'laboratory_employees',
+        ],
     ],
 
     /*
@@ -93,6 +98,11 @@ return [
         'ray_employees' => [
             'driver' => 'eloquent',
             'model' => App\Models\RayEmployee::class,
+        ],
+
+        'laboratory_employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\LaboratoryEmployee::class,
         ],
         // 'users' => [
         //     'driver' => 'database',

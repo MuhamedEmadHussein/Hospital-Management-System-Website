@@ -32,6 +32,11 @@
                 href="{{ route('dashboard.ray_employee') }}">Back to Home</a>
         @endif
 
+        @if (auth('lab_employee')->check())
+            <h6>You may have mistyped the address or the page may have moved.</h6><a class="btn btn-outline-danger"
+                href="{{ route('dashboard.lab_employee') }}">Back to Home</a>
+        @endif
+
     </div>
     <!-- /Main-error-wrapper -->
 @endsection

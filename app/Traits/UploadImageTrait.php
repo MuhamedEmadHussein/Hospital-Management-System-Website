@@ -45,8 +45,6 @@ trait UploadImageTrait{
         return $varforeach->storeAs($foldername, time() . '_' . $varforeach->getClientOriginalName(), $disk);
     }
 
-
-
     public function Delete_attachment($disk,$path,$id){
         Storage::disk($disk)->delete($path);
         image::where('id',$id)->delete();

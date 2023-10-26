@@ -24,5 +24,10 @@
     @if (auth('ray_employee')->check())
         @include('Dashboard.layouts.main-sidebar.ray-sidebar')
     @endif
+
+    @if (auth('lab_employee')->check())
+        @include('Dashboard.layouts.main-sidebar.lab-sidebar')
+    @endif
+
 </aside>
 <!-- main-sidebar -->

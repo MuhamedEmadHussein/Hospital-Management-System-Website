@@ -298,7 +298,6 @@
                         </div>
                         <a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>الملف الشخصي</a>
                         <a class="dropdown-item" href=""><i class="bx bx-cog"></i>تعديل الملف الشخصي</a>
-
                         @if (auth('web')->check())
                             <a class="dropdown-item" href="{{ route('logout.user') }}"
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
@@ -329,6 +328,14 @@
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
                                     class="bx bx-log-out"></i>تسجيل خروج</a>
                             <form id="logout-form" action="{{ route('logout.ray_employee') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+                        @elseif (auth('lab_employee')->check())
+                            <a class="dropdown-item" href="{{ route('logout.lab_employee') }}"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                    class="bx bx-log-out"></i>تسجيل خروج</a>
+                            <form id="logout-form" action="{{ route('logout.lab_employee') }}" method="POST"
                                 style="display: none;">
                                 @csrf
                             </form>

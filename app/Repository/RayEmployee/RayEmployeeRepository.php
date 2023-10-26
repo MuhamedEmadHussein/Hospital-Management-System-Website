@@ -92,6 +92,7 @@ class RayEmployeeRepository implements RayEmployeeRepositoryInterface{
     public function update($request,$id){
         try{
             $input = $request->all();
+            
             if(!empty($input['password'])){
                 $input['password'] = Hash::make($input['password']);
 

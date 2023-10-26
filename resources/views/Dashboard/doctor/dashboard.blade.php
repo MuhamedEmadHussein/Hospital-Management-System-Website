@@ -11,6 +11,18 @@
         <div class="left-content">
             <div>
                 <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">لوحة تحكم الدكتور</h2>
+                <p class="mg-b-0">دكتور {{ Auth::user()->name }}</p>
+
+            </div>
+        </div>
+        <div class="main-dashboard-header-right">
+            <div>
+                <label class="tx-13">عدد الفواتير</label>
+                <h5>{{ \App\Models\Invoice::where('doctor_id', Auth::user()->id)->count() }}</h5>
+            </div>
+            <div>
+                <label class="tx-13">عدد المرضي </label>
+                <h5>{{ \App\Models\Invoice::where('doctor_id', Auth::user()->id)->distinct('patient_id')->count() }}</h5>
             </div>
         </div>
     </div>
@@ -23,13 +35,14 @@
             <div class="card overflow-hidden sales-card bg-primary-gradient">
                 <div class="pl-3 pt-3 pr-3 pb-2 pt-0">
                     <div class="">
-                        <h6 class="mb-3 tx-12 text-white">عدد الفواتير</h6>
+                        <h6 class="mb-3 tx-12 text-white">إجمالي الإستحقاقات</h6>
                     </div>
                     <div class="pb-0 mt-0">
                         <div class="d-flex">
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                    {{-- {{ App\Models\Invoice::where('doctor_id', auth()->user()->id)->count() }}</h4> --}}
+                                    $ {{ \App\Models\Invoice::where('doctor_id', Auth::user()->id)->sum('total_with_tax') }}
+                                </h4>
                             </div>
                         </div>
                     </div>
@@ -47,7 +60,7 @@
                         <div class="d-flex">
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                    {{-- {{App\Models\Invoice::where('doctor_id',auth()->user()->id)->where('invoice_status',1)->count()}} --}}
+                                    {{ App\Models\Invoice::where('doctor_id', auth()->user()->id)->where('invoice_status', 1)->count() }}
                                 </h4>
                             </div>
                         </div>
@@ -66,7 +79,7 @@
                         <div class="d-flex">
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                    {{-- {{App\Models\Invoice::where('doctor_id',auth()->user()->id)->where('invoice_status',3)->count()}} --}}
+                                    {{ App\Models\Invoice::where('doctor_id', auth()->user()->id)->where('invoice_status', 3)->count() }}
                                 </h4>
                             </div>
                         </div>
@@ -85,7 +98,7 @@
                         <div class="d-flex">
                             <div class="">
                                 <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                    {{-- {{App\Models\Invoice::where('doctor_id',auth()->user()->id)->where('invoice_status',2)->count()}} --}}
+                                    {{ App\Models\Invoice::where('doctor_id', auth()->user()->id)->where('invoice_status', 2)->count() }}
                                 </h4>
                             </div>
                         </div>

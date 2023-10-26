@@ -5,12 +5,14 @@ use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DoctorController;
 use App\Http\Controllers\Dashboard\InsuranceController;
+use App\Http\Controllers\Dashboard\LaboratoryEmployeeController;
 use App\Http\Controllers\Dashboard\PatientController;
 use App\Http\Controllers\Dashboard\PaymentAccountController;
 use App\Http\Controllers\Dashboard\RayEmployeeController;
 use App\Http\Controllers\Dashboard\ReceiptAccountController;
 use App\Http\Controllers\Dashboard\SingleServiceController;
 use App\Livewire\SingleInvoices;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -47,7 +49,19 @@ Route::group(
 
         //##################### Dashboard Admin #################################################
         Route::get('/dashboard/admin', function () {
-            return view('Dashboard.Admin.dashboard');
+            
+            $data['single_service'] = \App\Models\Service::count();
+            $data['group_service'] = \App\Models\Group::count();
+            $data['doctors'] = \App\Models\Doctor::count();
+            // $data['patients'] = \App\Models\Invoice::where('doctor_id',Auth::user()->id)->distinct('patient_id')->count();
+            // $data['total'] = \App\Models\Invoice::where('doctor_id',Auth::user()->id)->sum('total_with_tax');
+            // $data['invoices'] = \App\Models\Invoice::where('doctor_id',Auth::user()->id)->count();
+
+            $data['patients'] = \App\Models\Invoice::count();            
+            $data['total'] = \App\Models\Invoice::sum('total_with_tax');
+            $data['invoices'] = \App\Models\Invoice::count();
+
+            return view('Dashboard.Admin.dashboard',$data);
         })->middleware(['auth:admin'])->name('dashboard.admin');
 
         //##################### Dashboard Ray Employee #################################################
@@ -55,7 +69,6 @@ Route::group(
             return view('Dashboard.ray_employee.dashboard');
         })->middleware(['auth:ray_employee'])->name('dashboard.ray_employee');
         
-
         //###########################################################################################
         Route::middleware(['auth:admin'])->group(function(){
 
@@ -69,6 +82,7 @@ Route::group(
             Route::resource('Receipt',ReceiptAccountController::class);
             Route::resource('Payment',PaymentAccountController::class);
             Route::resource('ray_employee',RayEmployeeController::class);
+            Route::resource('lab_employee',LaboratoryEmployeeController::class);
             
             Route::post('update_password',[DoctorController::class,'update_password'])->name('update_password');
             Route::post('update_status',[DoctorController::class,'update_status'])->name('update_status');

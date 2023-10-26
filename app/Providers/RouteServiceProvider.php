@@ -23,6 +23,7 @@ class RouteServiceProvider extends ServiceProvider
 
     public const RAYEMPLOYEE = '/dashboard/ray_employee';
 
+    public const LABEMPLOYEE = '/dashboard/lab_employee';
 
     
     /**
@@ -48,6 +49,9 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/doctor.php'));    
+
+            Route::middleware('web')
+            ->group(base_path('routes/lab_employee.php'));     
         });
     }
 }
