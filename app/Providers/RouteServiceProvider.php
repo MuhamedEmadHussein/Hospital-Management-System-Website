@@ -19,6 +19,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/dashboard/user';
     public const ADMIN = '/dashboard/admin';
+    public const PATIENT = '/dashboard/patient';
+
     public const DOCTOR = '/dashboard/doctor';
 
     public const RAYEMPLOYEE = '/dashboard/ray_employee';
@@ -51,7 +53,10 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/doctor.php'));    
 
             Route::middleware('web')
-            ->group(base_path('routes/lab_employee.php'));     
+            ->group(base_path('routes/lab_employee.php'));   
+            
+            Route::middleware('web')
+            ->group(base_path('routes/patient.php'));  
         });
     }
 }

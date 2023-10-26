@@ -73,7 +73,7 @@
                                             {{-- form user --}}
                                             <div class="panel" id="user">
                                                 <h2>{{ trans('Dashboard/login_trans.user') }}</h2>
-                                                <form method="POST" action="{{ route('login.user') }}">
+                                                <form method="POST" action="{{ route('login.patient') }}">
                                                     @csrf
                                                     <div class="form-group">
                                                         <label>{{ trans('Dashboard/login_trans.email') }}</label> <input

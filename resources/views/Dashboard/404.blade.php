@@ -37,6 +37,10 @@
                 href="{{ route('dashboard.lab_employee') }}">Back to Home</a>
         @endif
 
+        @if (auth('patient')->check())
+            <h6>You may have mistyped the address or the page may have moved.</h6><a class="btn btn-outline-danger"
+                href="{{ route('dashboard.patient') }}">Back to Home</a>
+        @endif
     </div>
     <!-- /Main-error-wrapper -->
 @endsection

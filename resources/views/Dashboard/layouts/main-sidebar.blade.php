@@ -29,5 +29,9 @@
         @include('Dashboard.layouts.main-sidebar.lab-sidebar')
     @endif
 
+    @if (auth('patient')->check())
+        @include('Dashboard.layouts.main-sidebar.patient-sidebar')
+    @endif
+
 </aside>
 <!-- main-sidebar -->

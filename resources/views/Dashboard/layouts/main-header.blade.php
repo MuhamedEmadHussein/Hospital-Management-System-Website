@@ -339,6 +339,14 @@
                                 style="display: none;">
                                 @csrf
                             </form>
+                        @elseif (auth('patient')->check())
+                            <a class="dropdown-item" href="{{ route('logout.patient') }}"
+                                onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                    class="bx bx-log-out"></i>تسجيل خروج</a>
+                            <form id="logout-form" action="{{ route('logout.patient') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
                         @endif
                     </div>
                 </div>
