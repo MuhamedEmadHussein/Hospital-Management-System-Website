@@ -8,10 +8,15 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
             ],
-            refresh: [
-                ...refreshPaths,
-                'app/Livewire/**',
-            ],
+            refresh: true,
         }),
     ],
 });
+ // input: [
+            //     'resources/css/app.css',
+            //     'resources/js/app.js',
+            // ],
+            // refresh: [
+            //     ...refreshPaths,
+            //     'app/Livewire/**',
+            // ],

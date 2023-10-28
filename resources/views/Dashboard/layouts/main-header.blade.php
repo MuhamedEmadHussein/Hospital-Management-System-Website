@@ -195,7 +195,7 @@
                             </p>
                         </div>
                         <div class="main-notification-list Notification-scroll" style="overflow-y: auto;">
-                            @foreach (App\Models\Notification::where('user_id', Auth::user()->id)->where('reader_status', 0)->get() as $notification)
+                            @foreach (App\Models\Notification::where('user_id', Auth::user()->id)->where('reader_status', 0)->orderBy('created_at', 'desc')->get() as $notification)
                                 <a class="d-flex p-3 border-bottom" href="#">
                                     <div class="notifyimg bg-pink">
                                         <i class="la la-file-alt text-white"></i>
@@ -315,9 +315,7 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-
-<script>
+<script type="module">
     // var notificationsWrapper = $('.dropdown-notifications');
     // var notificationsCountElem = notificationsWrapper.find('p[data-count]');
     // var notificationsCount = parseInt(notificationsCountElem.data('count'));
@@ -330,9 +328,9 @@
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
 
-    var pusher = new Pusher('1bb808079975f550e12e', {
-        cluster: 'mt1'
-    });
+    // var pusher = new Pusher('1bb808079975f550e12e', {
+    //     cluster: 'mt1'
+    // });
 
     Echo.private('create-invoice.{{ auth()->user()->id }}').listen('.create-invoice', (data) => {
 
