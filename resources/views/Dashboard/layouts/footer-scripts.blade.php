@@ -51,6 +51,4 @@
 <!--Internal  Datatable js -->
 <script src="{{ URL::asset('Dashboard/js/table-data.js') }}"></script>
 
-<script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-
 @livewireScripts

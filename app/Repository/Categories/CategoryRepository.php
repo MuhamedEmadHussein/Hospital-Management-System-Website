@@ -2,9 +2,11 @@
 
 namespace App\Repository\Categories;
 
+use App\Events\MyEvent;
 use App\Interfaces\Categories\CategoriesRepositoryInterface;
 use App\Models\Category;
 use App\Models\Doctor;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryRepository implements CategoriesRepositoryInterface {
 

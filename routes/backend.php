@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\MyEvent;
 use App\Http\Controllers\Dashboard\AmbulanceController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -49,7 +50,7 @@ Route::group(
 
         //##################### Dashboard Admin #################################################
         Route::get('/dashboard/admin', function () {
-            
+
             $data['single_service'] = \App\Models\Service::count();
             $data['group_service'] = \App\Models\Group::count();
             $data['doctors'] = \App\Models\Doctor::count();
