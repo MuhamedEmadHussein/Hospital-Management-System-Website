@@ -37,7 +37,8 @@ class CreateChat extends Component
                 Message::create([
                     'conversation_id' =>  $create_conversation->id,
                     'sender_email' =>  $this->auth_email,
-                    'receiver_email' => $receiver_email
+                    'receiver_email' => $receiver_email,
+                    'body' => 'السلام عليكم'
                 ]);
                 
                 DB::commit();

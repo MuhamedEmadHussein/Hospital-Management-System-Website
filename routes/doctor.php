@@ -7,6 +7,8 @@ use App\Http\Controllers\doctor\LaboratoriesController;
 use App\Http\Controllers\doctor\PatientDetailsController;
 use App\Http\Controllers\doctor\RaysController;
 use App\Http\Controllers\LabEmployee\LabInvoicesController;
+use App\Livewire\Chat\CreateChat;
+use App\Livewire\Chat\Main;
 use Illuminate\Support\Facades\Route;
 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -52,6 +54,11 @@ Route::group(
                 Route::resource('rays',RaysController::class);
                 Route::resource('Laboratories',LaboratoriesController::class);
 
+                //##################### Route Chat #################################################
+                
+                Route::get('list/patients',CreateChat::class)->name('list.patients');
+                Route::get('chat/patients',Main::class)->name('chat.patients');
+      
                 
             });
         });
