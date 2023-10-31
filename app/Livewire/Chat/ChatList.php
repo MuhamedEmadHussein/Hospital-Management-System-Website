@@ -10,6 +10,8 @@ use Livewire\Component;
 
 class ChatList extends Component
 {
+    protected $listeners = ['refresh'=>'$refresh'];
+
     public $auth_email;
     public $conversations;
     public $receiverUser;
