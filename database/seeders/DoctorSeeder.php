@@ -15,15 +15,15 @@ class DoctorSeeder extends Seeder
     public function run(): void
     {
         //
-        $doctors = Doctor::factory()->count(30)->create();
+        Doctor::factory()->count(30)->create();
 
-        $appointments = Appointment::all();
+        // $appointments = Appointment::all();
 
-        Doctor::all()->each(function($doctor) use($appointments) {
-            $doctor->doctors_appointments_pivot()->attach(
-                $appointments->random(rand(1, 7))->pluck('id')->toArray()
-            );
-        });
+        // Doctor::all()->each(function($doctor) use($appointments) {
+        //     $doctor->doctors_appointments_pivot()->attach(
+        //         $appointments->random(rand(1, 7))->pluck('id')->toArray()
+        //     );
+        // });
         
         // Another Way 
 

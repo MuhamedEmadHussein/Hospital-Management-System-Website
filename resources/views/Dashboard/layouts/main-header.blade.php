@@ -316,10 +316,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 <script type="module">
-    // var notificationsWrapper = $('.dropdown-notifications');
-    // var notificationsCountElem = notificationsWrapper.find('p[data-count]');
-    // var notificationsCount = parseInt(notificationsCountElem.data('count'));
-    // var notifications = notificationsWrapper.find('h5.notification-label');
     var notificationsWrapper = $('.dropdown-notifications');
     var notificationsCountElem = notificationsWrapper.find('p[data-count]');
     var notificationsCount = parseInt(notificationsCountElem.data('count'));
@@ -327,10 +323,6 @@
 
     // Enable pusher logging - don't include this in production
     Pusher.logToConsole = true;
-
-    // var pusher = new Pusher('1bb808079975f550e12e', {
-    //     cluster: 'mt1'
-    // });
 
     Echo.private('create-invoice.{{ auth()->user()->id }}').listen('.create-invoice', (data) => {
 

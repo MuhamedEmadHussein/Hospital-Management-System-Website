@@ -1,4 +1,5 @@
 <?php return array (
+  'appointments.create' => 'App\\Livewire\\Appointments\\Create',
   'chat.chat-box' => 'App\\Livewire\\Chat\\ChatBox',
   'chat.chat-list' => 'App\\Livewire\\Chat\\ChatList',
   'chat.create-chat' => 'App\\Livewire\\Chat\\CreateChat',

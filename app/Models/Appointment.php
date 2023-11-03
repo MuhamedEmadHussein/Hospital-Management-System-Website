@@ -11,8 +11,7 @@ class Appointment extends Model implements TranslatableContract
 {
     use HasFactory;
     use Translatable;
-    protected $fillable = ['name'];
-    
+    protected $fillable = ['name','email','phone','doctor_id','category_id','notes'];
     // To define which attributes needs to be translated
     public $translatedAttributes = ['name'];
 }
