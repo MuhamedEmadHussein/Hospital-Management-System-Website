@@ -2,6 +2,7 @@
 
 use App\Events\MyEvent;
 use App\Http\Controllers\Dashboard\AmbulanceController;
+use App\Http\Controllers\Dashboard\Appointments\AppointmentsController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\DoctorController;
@@ -85,6 +86,10 @@ Route::group(
             Route::resource('ray_employee',RayEmployeeController::class);
             Route::resource('lab_employee',LaboratoryEmployeeController::class);
             
+            Route::get('/appointments',[AppointmentsController::class,'index'])->name('appointments.list');  
+            Route::put('/appointments/approve/{id}',[AppointmentsController::class,'approveAppointment'])->name('appointments.approval');     
+            Route::get('/appointments/approve',[AppointmentsController::class,'approvedAppointments'])->name('appointments.approved');     
+            Route::delete('/appointment/delete/{id}',[AppointmentsController::class,'destroy'])->name('appointment.destroy');
             Route::post('update_password',[DoctorController::class,'update_password'])->name('update_password');
             Route::post('update_status',[DoctorController::class,'update_status'])->name('update_status');
             

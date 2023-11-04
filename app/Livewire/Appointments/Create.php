@@ -47,8 +47,7 @@ class Create extends Component
             'phone' => $this->phone,
             'notes' => $this->notes,
         ]);
-      
-             
+                   
         $this->message = true;
     }
 
