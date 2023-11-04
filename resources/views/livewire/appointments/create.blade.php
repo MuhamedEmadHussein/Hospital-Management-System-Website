@@ -1,10 +1,18 @@
 <div>
-    @if($message === true)
+    @if($success_message === true)
         <script>
             alert('تم ارسال تفاصيل الحجز الي المستشفي وسيتم ارسال معلومات الموعد عبر الهاتف والبريد الالكتروني')
             location.reload()
         </script>
     @endif
+
+    @if($fail_message === true)
+        <script>
+            alert('لا توجد مواعيد متاحة لهذا اليوم!. يرجي إختيار ميعاد أخر')
+            location.reload()
+        </script>
+    @endif
+
     <form wire:submit.prevent="store">
         <div class="row clearfix">
             <div class="col-lg-6 col-md-6 col-sm-12 form-group">
@@ -43,6 +51,10 @@
                 <span class="icon fas fa-phone"></span>
             </div>
 
+            <div class="col-lg-12 col-md-6 col-sm-12 form-group">
+                <label for="exampleFormControlSelect1">تاريخ الموعد</label>
+                <input type="date" name="appointment_patient" wire:model="appointment_patient"  required class="form-control">         
+            </div>
 
             <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                 <textarea name="notes" wire:model="notes" placeholder="ملاحظات"></textarea>

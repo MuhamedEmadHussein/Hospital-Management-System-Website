@@ -36,6 +36,8 @@ class DoctorRepository implements DoctorsRepositoryInterface{
             $doctors->phone = $request->phone;
             // $doctors->price = $request->price;
             $doctors->status = 1;
+            $doctors->number_of_statements = $request->number_of_statements;
+
             $doctors->save();
 
             // store trans
@@ -80,6 +82,8 @@ class DoctorRepository implements DoctorsRepositoryInterface{
             $doctor->email = $request->email;
             $doctor->category_id = $request->section_id;
             $doctor->phone = $request->phone;
+            $doctor->number_of_statements = $request->number_of_statements;
+
             $doctor->save();
             // store trans
             $doctor->name = $request->name;

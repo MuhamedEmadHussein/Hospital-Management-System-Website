@@ -17,8 +17,9 @@ class Create extends Component
     public $email;
     public $phone;
     public $notes;
-    public $message= false;
-    
+    public $appointment_patient;
+    public $success_message= false;
+    public $fail_message = false;
     public function mount(){
 
         $this->sections = Category::get();
@@ -38,7 +39,14 @@ class Create extends Component
    
     }
     public function store(){
-
+       $doctor_appointment_count = Appointment::where('doctor_id', $this->doctor)->where('type','غير مؤكد')->where('appointment_patient', $this->appointment_patient)->count();
+       $doctor_info = Doctor::findOrFail($this->doctor);
+       
+       if($doctor_appointment_count ==  $doctor_info->number_of_statements){
+            $this->fail_message = true;
+            return redirect()->back();
+       } 
+       
        Appointment::create([
             'doctor_id' => $this->doctor,
             'category_id' => $this->section,
@@ -46,9 +54,10 @@ class Create extends Component
             'email' => $this->email,
             'phone' => $this->phone,
             'notes' => $this->notes,
+            'appointment_patient' => $this->appointment_patient
         ]);
                    
-        $this->message = true;
+        $this->success_message = true;
     }
 
 }

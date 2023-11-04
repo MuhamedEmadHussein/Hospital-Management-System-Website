@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Events\CreateInvoice;
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\FundAccount;
 use App\Models\Invoice;
@@ -153,6 +154,16 @@ class SingleInvoices extends Component
                     $fund_accounts->Debit = $single_invoices->total_with_tax;
                     $fund_accounts->credit = 0.00;
                     $fund_accounts->save();                    
+
+                     // chek appointment
+                     $patient = Patient::find($this->patient_id);
+                     $appointment_info = Appointment::where('doctor_id', $this->doctor_id)->where('email', $patient->email)->where('type','مؤكد')->first();
+                     if ($appointment_info) {
+                         $appointment = Appointment::find($appointment_info->id);
+                         $appointment->update([
+                             'type' => 'منتهي'
+                         ]);
+                     }
 
                     $username = Doctor::find($this->doctor_id)->name; 
 

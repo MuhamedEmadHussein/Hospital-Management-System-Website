@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone');
             // $table->decimal('price',8,2);
             $table->boolean('status')->default(1);
+            $table->integer('number_of_statements');
             $table->string('profile_photo_path', 2048)->nullable();
             $table->foreignId('category_id')->references('id')->on('categories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('current_team_id')->nullable();
